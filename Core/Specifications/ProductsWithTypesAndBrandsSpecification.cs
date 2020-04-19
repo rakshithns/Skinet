@@ -18,7 +18,7 @@ namespace Core.Specifications
                 {
                     case "priceAsc":AddOrderBy(x=>x.Price);
                                     break;
-                    case "proceDsc":AddOrderByDescending(x=>x.Price);
+                    case "priceDesc":AddOrderByDescending(x=>x.Price);
                                     break; 
                     default:AddOrderBy(x=>x.Name);
                             break;        
