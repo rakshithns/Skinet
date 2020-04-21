@@ -8,7 +8,7 @@ const routes: Routes = [
   // {path: 'shop', component: ShopComponent} can be written as 
   {path: '', component: ShopComponent},
   // {path: 'shop/:id', component: ProductDetailsComponent} can be written as  
-  {path: ':id', component: ProductDetailsComponent}
+  {path: ':id', component: ProductDetailsComponent, data: {breadcrumb: {alias: 'productDetails'}}}
 ];
 
 @NgModule({
