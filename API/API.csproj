@@ -8,6 +8,7 @@
     <PackageReference Include="Abbotware.Interop.SystemTextJson" Version="4.0.115"/>
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.3.1"/>
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.3.1"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj"/>
