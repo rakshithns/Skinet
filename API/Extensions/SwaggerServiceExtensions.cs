@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace API.Extensions
 {
@@ -10,6 +11,28 @@ namespace API.Extensions
             services.AddSwaggerGen(o=>
             {
                 o.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title = "Skinet API", Version = "v1"});
+
+                var securitySchema = new OpenApiSecurityScheme
+                {
+                    Description = "JWT Auth Bearer Scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference{
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+
+                o.AddSecurityDefinition("Bearer", securitySchema);
+                var securityRequirements = new OpenApiSecurityRequirement{
+                    {
+                        securitySchema,
+                        new [] {"Bearer"}
+                    }
+                };
+
+                o.AddSecurityRequirement(securityRequirements);
             });
             return services;
         }

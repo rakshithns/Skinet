@@ -60,6 +60,7 @@ namespace API.Controllers
         [Authorize]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto addressDto)
         {
+
             var user = await _userManager.FindEmailWithAddressAsync(HttpContext.User);
             user.Address = _mapper.Map<Address>(addressDto);
             var result = await _userManager.UpdateAsync(user);
@@ -92,6 +93,11 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
+            if (CheckEmailExists(registerDto.Email).Result.Value)
+            {
+                return new BadRequestObjectResult(new ApiValidationErrorResponse{ Errors = new [] { "Email Address already in use."}});
+            }
+
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
