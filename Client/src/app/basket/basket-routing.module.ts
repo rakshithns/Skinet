@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { BasketComponent } from './basket.component';
 
 const routes: Routes = [
-  // {path: 'shop', component: ShopComponent} can be written as 
   {path: '', component: BasketComponent}
 ];
 
